@@ -1,0 +1,248 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brrr-bg: #f0f4f8;
+  --color-brrr-panel: #ffffff;
+  --color-brrr-border: #cbd5e1;
+  --color-brrr-green: #16a34a;
+  --color-brrr-red: #dc2626;
+  --color-brrr-cyan: #0369a1;
+  --color-brrr-gold: #b45309;
+  --color-brrr-muted: #64748b;
+  --color-brrr-text: #1e293b;
+
+  --color-term-bg: #f8fafc;
+  --color-term-panel: #ffffff;
+  --color-term-border: #94a3b8;
+  --color-term-green: #16a34a;
+  --color-term-red: #dc2626;
+  --color-term-cyan: #0369a1;
+  --color-term-gold: #b45309;
+  --color-term-muted: #64748b;
+  --color-term-text: #1e293b;
+
+  --font-pixel: "Press Start 2P", monospace;
+  --font-mono: "VT323", "Courier New", monospace;
+}
+
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("https://fonts.gstatic.com/s/pressstart2p/v15/e3t4euO8T-267oIAQAu6jDQyK3nVivM.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "VT323";
+  src: url("https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isRFJXGdg.woff2")
+    format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-brrr-border) transparent;
+}
+
+body {
+  background: var(--color-brrr-bg);
+  color: var(--color-brrr-text);
+  font-family: var(--font-pixel);
+  font-size: 12px;
+}
+
+img[data-pixel] {
+  image-rendering: pixelated;
+}
+
+/* ═══ ANIMATIONS ═══ */
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.animate-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+.animate-marquee-reverse {
+  animation: marquee-reverse 25s linear infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { box-shadow: 0 0 4px var(--color-brrr-green); }
+  50% { box-shadow: 0 0 16px var(--color-brrr-green); }
+}
+.animate-pulse-green {
+  animation: pulse-green 2s ease-in-out infinite;
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+.scanline::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(22, 163, 74, 0.04);
+  pointer-events: none;
+  animation: scanline 8s linear infinite;
+  z-index: 9999;
+}
+
+/* ═══ TERMINAL STYLES (white pixel) ═══ */
+
+.mini-terminal {
+  background: rgba(255, 255, 255, 0.9);
+  border: 3px solid #64748b;
+  box-shadow:
+    4px 4px 0 #94a3b8,
+    0 4px 20px rgba(0, 0, 0, 0.1);
+  image-rendering: pixelated;
+}
+
+.terminal-pixel {
+  background: rgba(255, 255, 255, 0.92);
+  border: 3px solid #64748b;
+  box-shadow:
+    4px 4px 0 #94a3b8,
+    0 4px 20px rgba(0, 0, 0, 0.1);
+  image-rendering: pixelated;
+}
+
+.terminal-pixel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0, 0, 0, 0.02) 3px,
+    rgba(0, 0, 0, 0.02) 4px
+  );
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ═══ BRRR GUY SPRITE ═══ */
+
+@keyframes brrr-print {
+  100% { background-position: -5400px; }
+}
+
+.brrr-guy-wrapper {
+  position: fixed;
+  z-index: 50;
+  pointer-events: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  width: 120px;
+  height: 155px;
+}
+
+.brrr-guy-sprite {
+  width: 120px;
+  height: 155px;
+  background-image: url("/brrrguy-sprite.png");
+  background-size: 1080px 155px;
+  image-rendering: pixelated;
+  animation: brrr-print 0.8s steps(9) infinite;
+}
+
+.brrr-money-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+@keyframes money-fly {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(30px, -80px) rotate(40deg);
+    opacity: 0;
+  }
+}
+
+.brrr-money {
+  position: absolute;
+  top: 20%;
+  animation: money-fly 1.2s ease-out infinite;
+}
+
+/* ═══ TRADE TABLE ═══ */
+
+.trade-row {
+  font-size: 8px;
+  line-height: 1.6;
+  display: flex;
+  align-items: center;
+}
+
+.trade-cell {
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 0;
+  padding-right: 6px;
+}
+
+.trade-time {
+  width: 72px;
+  color: var(--color-term-muted);
+}
+
+.trade-coin {
+  width: 68px;
+  font-weight: 700;
+  color: var(--color-term-cyan);
+}
+
+.trade-dir {
+  width: 52px;
+}
+
+.trade-size {
+  width: 62px;
+  text-align: right;
+  color: var(--color-term-text);
+  opacity: 0.6;
+}
+
+.trade-price {
+  width: 78px;
+  text-align: right;
+  color: var(--color-term-text);
+}
+
+.trade-pnl {
+  width: 72px;
+  text-align: right;
+  font-weight: 700;
+}
