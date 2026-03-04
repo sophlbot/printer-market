@@ -299,7 +299,7 @@ export default function Home() {
             Buy $Printer
           </a>
           <a
-            href="https://x.com/PrinterTrader"
+            href="https://x.com/MoneyPrintBot"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-brrr-muted transition-colors hover:text-brrr-cyan"

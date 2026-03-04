@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { label: "Story", href: "#story" },
 ];
 
-const TWITTER_URL = "https://x.com/PrinterTrader";
+const TWITTER_URL = "https://x.com/MoneyPrintBot";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

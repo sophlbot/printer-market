@@ -1,6 +1,6 @@
 export const HL_USER = process.env.NEXT_PUBLIC_HL_USER ?? "";
-export const TOKEN_CA = process.env.NEXT_PUBLIC_TOKEN_CA ?? "";
-export const BUY_URL = process.env.NEXT_PUBLIC_BUY_URL ?? "https://pump.fun";
+export const TOKEN_CA = process.env.NEXT_PUBLIC_TOKEN_CA ?? "4QUjYZsvAbnxDD1ujVVJyQyfn7iPEuYiHX7SQpNbpump";
+export const BUY_URL = process.env.NEXT_PUBLIC_BUY_URL ?? "https://pump.fun/coin/4QUjYZsvAbnxDD1ujVVJyQyfn7iPEuYiHX7SQpNbpump";
 export const BOT_START_MS = Number(process.env.NEXT_PUBLIC_BOT_START_MS ?? Date.now());
 
 export const HL_INFO_URL = "https://api.hyperliquid.xyz/info";
