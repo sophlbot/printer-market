@@ -11,7 +11,7 @@ const NAV_LINKS = [
   { label: "Story", href: "#story" },
 ];
 
-const TWITTER_URL = "https://x.com/MoneyPrintBot";
+const TWITTER_URL = "https://x.com/liamscalzulli";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -30,7 +30,7 @@ export default function Header() {
           onClick={() => scroll("#hero")}
           className="flex items-center gap-2 text-[11px] font-bold tracking-wider text-brrr-green transition-colors hover:text-brrr-cyan"
         >
-$Printer
+Trader Bot
         </button>
 
         {/* NAV — desktop */}
@@ -66,7 +66,7 @@ $Printer
             rel="noopener noreferrer"
             className="border-2 border-brrr-green bg-brrr-green px-4 py-1.5 text-[8px] uppercase tracking-widest text-white shadow-[2px_2px_0_#15803d] transition-all hover:brightness-110"
           >
-            Buy $Printer
+            Buy $Trader
           </a>
 
           {/* Hamburger — mobile */}

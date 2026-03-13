@@ -17,7 +17,7 @@ export default function TerminalLine() {
 
   return (
     <div className="flex flex-wrap items-center justify-center gap-3 rounded-lg border border-brrr-border bg-white/80 px-4 py-2 font-[family-name:var(--font-mono)] shadow-sm backdrop-blur-sm">
-      <span className="text-sm font-bold text-brrr-cyan">printer@mint</span>
+      <span className="text-sm font-bold text-brrr-cyan">traderbot@hft</span>
       <LiveBadge />
       <span className="text-sm text-brrr-muted">{elapsed}</span>
       <span className="animate-blink text-brrr-green">█</span>

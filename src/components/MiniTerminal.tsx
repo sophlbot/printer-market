@@ -27,7 +27,7 @@ export default function MiniTerminal({ fills }: MiniTerminalProps) {
           <span className="h-3 w-3 border-2 border-term-green bg-term-green" />
         </div>
         <span className="font-[family-name:var(--font-pixel)] text-[8px] tracking-widest text-term-muted">
-          printer@mint
+          traderbot@hft
         </span>
         <span className="inline-flex items-center gap-1.5 font-[family-name:var(--font-pixel)] text-[8px] text-term-green">
           <span className="h-2 w-2 bg-term-green" />
@@ -40,7 +40,7 @@ export default function MiniTerminal({ fills }: MiniTerminalProps) {
         {recent.length === 0 ? (
           <div className="py-4 text-center">
             <span className="animate-blink font-[family-name:var(--font-pixel)] text-[8px] text-term-muted">
-              Connecting to printer...
+              Connecting to Trader Bot...
             </span>
           </div>
         ) : (

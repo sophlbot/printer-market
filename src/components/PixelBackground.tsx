@@ -9,7 +9,7 @@ export default function PixelBackground() {
         className="h-full w-full object-cover"
         data-pixel=""
       />
-      <div className="absolute inset-0 bg-white/20" />
+      <div className="absolute inset-0 bg-black/50" />
     </div>
   );
 }

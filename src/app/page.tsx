@@ -20,6 +20,8 @@ import PixelBackground from "@/components/PixelBackground";
 import MiniTerminal from "@/components/MiniTerminal";
 import Dashboard from "@/components/Dashboard";
 import Header from "@/components/Header";
+import PaymentGate from "@/components/PaymentGate";
+import BuybackBanner from "@/components/BuybackBanner";
 
 function useUptime() {
   const [uptime, setUptime] = useState(
@@ -59,24 +61,19 @@ export default function Home() {
         <div className="flex flex-1 flex-col gap-6 lg:flex-row lg:items-center lg:gap-8">
           {/* LEFT: banner + text + CTAs */}
           <div className="flex flex-1 flex-col items-center gap-4 text-center lg:items-start lg:text-left">
-            <div className="w-full max-w-xl overflow-hidden rounded-xl border-2 border-white/40 shadow-lg">
-              <video
-                src="/hero.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full"
-              />
-            </div>
-
+            <img
+              src="/traderbot.png"
+              alt="Trader Bot"
+              className="mx-auto h-48 w-48 drop-shadow-[0_4px_12px_rgba(22,163,74,0.3)] md:h-56 md:w-56 lg:mx-0"
+              data-pixel
+            />
             <h1 className="font-[family-name:var(--font-pixel)] text-2xl leading-tight text-brrr-text drop-shadow-[0_2px_4px_rgba(255,255,255,0.5)] md:text-3xl lg:text-4xl">
-              Money Printer Go Brrr
+              Trader Bot
             </h1>
 
             <p className="max-w-lg rounded-lg bg-white/60 px-4 py-2 text-lg text-brrr-text backdrop-blur-sm md:text-xl">
-              &ldquo;The printer does the work. I just watch the numbers go up.
-              It&apos;s called passive income, and I learned it from a meme.&rdquo;
+              &ldquo;The bot does the work. I just watch the numbers go up.
+              High-frequency trading on Hyperliquid, 24/7.&rdquo;
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -86,7 +83,7 @@ export default function Home() {
                 rel="noopener noreferrer"
                 className="rounded-lg border-2 border-brrr-green bg-brrr-green px-10 py-3 font-[family-name:var(--font-pixel)] text-sm text-white shadow-md transition-all hover:bg-brrr-green/90"
               >
-                Buy $Printer
+                Buy $Trader
               </a>
               <button
                 onClick={() =>
@@ -96,7 +93,7 @@ export default function Home() {
                 }
                 className="rounded-lg border border-brrr-border bg-white/80 px-10 py-3 font-[family-name:var(--font-pixel)] text-sm text-brrr-text shadow-sm backdrop-blur-sm transition-colors hover:border-brrr-cyan hover:text-brrr-cyan"
               >
-                Watch Me Print
+                Watch Live Trades
               </button>
             </div>
 
@@ -125,29 +122,36 @@ export default function Home() {
         <Marquee items={SLOGANS} />
       </div>
 
+      {/* ══════════ BUYBACK ENGINE ══════════ */}
+      <section className="relative z-10 mx-auto max-w-7xl px-4 pt-12 pb-4">
+        <BuybackBanner totalProfit={metrics?.totalProfit ?? 0} />
+      </section>
+
       {/* ══════════ TRADING DASHBOARD ══════════ */}
       <section
         id="terminal"
-        className="relative z-10 mx-auto max-w-7xl px-4 py-12"
+        className="relative z-10 mx-auto max-w-7xl px-4 py-8"
       >
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div>
-            <h2 className="text-base text-brrr-text drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)] md:text-lg">
-              THE MONEY PRINTER
+            <h2 className="text-base text-white drop-shadow-[0_1px_4px_rgba(0,0,0,0.8)] md:text-lg">
+              TRADER BOT TERMINAL
             </h2>
-            <p className="mt-1 rounded bg-white/70 px-2 py-1 text-[10px] text-brrr-muted backdrop-blur-sm">
-              Real Trades &bull; Real Money &bull; Real Printing &bull; Click any trade to verify on-chain
+            <p className="mt-1 rounded bg-white/90 px-2 py-1 text-[10px] text-brrr-muted backdrop-blur-md">
+              Pump.fun Tokenized Agent &bull; HFT on Hyperliquid &bull; All profits → buybacks
             </p>
           </div>
           <button
             onClick={() => setFsOpen(true)}
-            className="rounded border-2 border-brrr-border bg-white/80 px-5 py-1.5 text-[10px] text-brrr-muted shadow-[2px_2px_0_#94a3b8] transition-colors hover:border-brrr-green hover:text-brrr-green"
+            className="rounded border-2 border-brrr-border bg-white/90 px-5 py-1.5 text-[10px] text-brrr-muted shadow-[2px_2px_0_#94a3b8] backdrop-blur-md transition-colors hover:border-brrr-green hover:text-brrr-green"
           >
             FULLSCREEN
           </button>
         </div>
 
-        <Dashboard fills={fills} metrics={metrics} connected={connected} />
+        <PaymentGate>
+          <Dashboard fills={fills} metrics={metrics} connected={connected} />
+        </PaymentGate>
       </section>
 
       {/* ══════════ MARQUEE 2 ══════════ */}
@@ -158,25 +162,25 @@ export default function Home() {
       {/* ══════════ WHAT IS $BRRR ══════════ */}
       <section id="about" className="relative z-10 mx-auto max-w-5xl px-4 py-12">
         <h2 className="mb-2 text-center font-[family-name:var(--font-pixel)] text-base text-brrr-text drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)] md:text-lg">
-          What Is $Printer?
+          What Is Trader Bot?
         </h2>
         <p className="mx-auto mb-8 w-fit rounded bg-white/70 px-3 py-1 text-center text-base italic text-brrr-muted backdrop-blur-sm">
-          &ldquo;It&apos;s like money, but louder.&rdquo;
+          &ldquo;An AI that trades. A token that captures the alpha.&rdquo;
         </p>
 
         <div className="grid gap-5 md:grid-cols-3">
           {[
             {
-              title: "The Token",
-              text: "$Printer is a Solana meme coin inspired by the legendary Money Printer meme. No VC, no roadmap committee — just a token backed by a real, live trading bot that actually prints profits on Hyperliquid.",
+              title: "Tokenized Agent",
+              text: "$Trader is a Pump.fun Tokenized Agent — an AI trading bot whose revenue is linked to its token. Every dollar the bot earns on Hyperliquid flows directly into $Trader buybacks.",
             },
             {
-              title: "The Bot",
-              text: "The BRRR bot runs 24/7 on Hyperliquid, executing trades every few seconds. It grinds out small edges at scale. You can watch it work in real-time on the live dashboard above.",
+              title: "HFT Engine",
+              text: "The bot runs 24/7 on Hyperliquid, executing high-frequency trades every few seconds. It grinds out small edges at scale. All profits are converted into $Trader buybacks on Pump.fun.",
             },
             {
-              title: "The Edge",
-              text: "Most meme coins have nothing behind them. $Printer has a transparent, verifiable trading operation. Every trade is on-chain. Every P&L number is real. The dashboard doesn't lie.",
+              title: "The Flywheel",
+              text: "More profit → more buybacks → higher token value → more attention → more users paying for dashboard access → more buybacks. A self-reinforcing value machine.",
             },
           ].map((card) => (
             <div
@@ -200,7 +204,7 @@ export default function Home() {
             rel="noopener noreferrer"
             className="rounded-lg border-2 border-brrr-green bg-brrr-green px-10 py-3 font-[family-name:var(--font-pixel)] text-sm text-white shadow-md transition-all hover:bg-brrr-green/90"
           >
-            Buy $Printer
+            Buy $Trader
           </a>
         </div>
       </section>
@@ -211,26 +215,26 @@ export default function Home() {
           How It Works
         </h2>
         <p className="mx-auto mb-8 w-fit rounded bg-white/70 px-3 py-1 text-center text-sm text-brrr-muted backdrop-blur-sm">
-          — The $Printer printing system, explained —
+          — The Trader Bot system, explained —
         </p>
 
         <div className="grid gap-5 md:grid-cols-2">
           {[
             {
-              step: "Step 1: The Market",
-              text: "Hyperliquid is a high-performance on-chain perps DEX. The bot trades BTC, ETH, and other perps around the clock, exploiting micro-inefficiencies in the order book.",
+              step: "Step 1: HFT on Hyperliquid",
+              text: "The bot trades BTC, ETH, and other perps around the clock on Hyperliquid — the highest-volume on-chain perps DEX. Micro-inefficiencies in the order book are the edge.",
             },
             {
-              step: "Step 2: The Bot",
-              text: "Our trading bot analyzes the order flow and places high-frequency trades. By entering and exiting positions at favorable prices, the bot locks in an edge before the market catches up.",
+              step: "Step 2: Profit Capture",
+              text: "High-frequency execution locks in small edges at scale. Thousands of trades per day, each capturing micro-alpha from order flow analysis and spread capture.",
             },
             {
-              step: "Step 3: Execution",
-              text: "Every trade is executed on Hyperliquid's on-chain infrastructure. The bot's profit comes from the spread between entry and exit, accumulated over thousands of micro-trades.",
+              step: "Step 3: Buyback Engine",
+              text: "All bot profits are routed to buy $Trader tokens on Pump.fun. This constant buy pressure creates a direct link between trading performance and token value.",
             },
             {
-              step: "Step 4: The Dashboard",
-              text: "Every trade, every fill, every dollar of P&L is tracked in real-time on the live dashboard. Nothing is hidden. The wallet is public. You can verify every number yourself.",
+              step: "Step 4: Pay-to-Access",
+              text: "Users pay 0.1 SOL via Pump.fun's Tokenized Agent protocol to access the live dashboard. 100% of access fees also flow into $Trader buybacks. Revenue = buybacks.",
             },
           ].map((item) => (
             <div
@@ -251,34 +255,32 @@ export default function Home() {
       {/* ══════════ ORIGIN STORY ══════════ */}
       <section id="story" className="relative z-10 mx-auto max-w-4xl px-4 py-12">
         <h2 className="mb-2 text-center font-[family-name:var(--font-pixel)] text-base text-brrr-text drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)] md:text-lg">
-          The $Printer Origin Story
+          The Trader Bot Origin Story
         </h2>
         <p className="mx-auto mb-6 w-fit rounded bg-white/70 px-3 py-1 text-center text-sm italic text-brrr-muted backdrop-blur-sm">
-          As told by the printer, at 3:47 AM, after its 10,000th trade
+          As told by the bot, at 3:47 AM, after its 10,000th trade
         </p>
 
         <div className="space-y-3 rounded-lg border border-brrr-border bg-white/80 p-6 text-base leading-relaxed text-brrr-text/80 shadow-sm backdrop-blur-sm">
-          <p>It started with a meme.</p>
+          <p>It started with a simple idea.</p>
           <p>
-            In 2020, when the Federal Reserve started printing money like there
-            was no tomorrow, the internet responded with the greatest financial
-            meme of all time: &ldquo;Haha money printer go brrr.&rdquo; The meme
-            captured something real — that sometimes the dumbest-looking strategy
-            is the one that works.
+            What if you could build an AI trading bot that runs autonomously,
+            captures alpha on the most liquid on-chain perps DEX, and links
+            every dollar of profit directly to a token via buybacks?
           </p>
           <p>
             We studied the on-chain trading landscape. Hyperliquid had emerged as
             the highest-volume on-chain perps DEX, with deep liquidity and
-            sub-second execution. The perfect printing press for an autonomous bot.
+            sub-second execution. The perfect arena for a high-frequency bot.
           </p>
           <p>
-            So we built our own printer. An autonomous trading bot that runs 24/7,
+            So we built Trader Bot. An autonomous HFT agent that runs 24/7,
             placing and managing positions on Hyperliquid. Every trade is executed
             on-chain. Every dollar of P&L is tracked on a public dashboard. No
             black boxes. No trust required.
           </p>
           <p className="font-semibold text-brrr-green">
-            $Printer is the token. The bot is the printer. The dashboard is the
+            $Trader is the token. The bot is the alpha engine. The dashboard is the
             proof.
           </p>
         </div>
@@ -287,7 +289,7 @@ export default function Home() {
       {/* ══════════ FOOTER ══════════ */}
       <footer className="relative z-10 border-t border-brrr-border bg-white/70 py-8 text-center backdrop-blur-sm">
         <p className="font-[family-name:var(--font-pixel)] text-sm text-brrr-green">
-          $Printer
+          Trader Bot
         </p>
         <div className="mt-3 flex justify-center gap-6">
           <a
@@ -296,10 +298,10 @@ export default function Home() {
             rel="noopener noreferrer"
             className="text-sm text-brrr-muted transition-colors hover:text-brrr-green"
           >
-            Buy $Printer
+            Buy $Trader
           </a>
           <a
-            href="https://x.com/MoneyPrintBot"
+            href="https://x.com/liamscalzulli"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-brrr-muted transition-colors hover:text-brrr-cyan"
@@ -316,7 +318,7 @@ export default function Home() {
           </a>
         </div>
         <p className="mt-4 text-sm text-brrr-muted/60">
-          &ldquo;Built in the basement. Tested on the internet.&rdquo;
+          &ldquo;Built by degens. Tested on Hyperliquid.&rdquo;
         </p>
       </footer>
 
